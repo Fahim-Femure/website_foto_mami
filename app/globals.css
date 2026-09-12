@@ -1,0 +1,241 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Poppins:wght@300;400;500;600&display=swap');
+@import "tailwindcss";
+
+:root {
+  --cream-gold: #F7EFC7;
+  --warm-yellow-start: #E8C34A;
+  --warm-yellow-end: #F3D877;
+  --deep-gold: #8A6A1F;
+  --dark-olive: #4A5A3A;
+  --charcoal: #4A4A4A;
+  --card-cream: #FDF9E8;
+  --shadow-gold: rgba(138, 106, 31, 0.15);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--cream-gold);
+  color: var(--charcoal);
+  font-family: 'Poppins', sans-serif;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Scrollbar kustom ── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--cream-gold);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--warm-yellow-start);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--deep-gold);
+}
+
+/* ── Typography ── */
+.font-serif-display {
+  font-family: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+}
+
+.font-serif-italic {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+}
+
+/* ── Gold gradient background ── */
+.bg-gold-gradient {
+  background: linear-gradient(135deg, var(--warm-yellow-start) 0%, var(--warm-yellow-end) 60%, #FAE89A 100%);
+}
+
+/* ── Shutter button animation ── */
+@keyframes shutter-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(138, 106, 31, 0.4); }
+  50% { box-shadow: 0 0 0 12px rgba(138, 106, 31, 0); }
+}
+
+.shutter-btn {
+  animation: shutter-pulse 2s ease-in-out infinite;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.shutter-btn:hover {
+  transform: scale(1.05);
+}
+
+.shutter-btn:active {
+  transform: scale(0.94);
+  animation: none;
+}
+
+/* ── Card foto hover ── */
+.photo-card {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.photo-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px var(--shadow-gold);
+}
+
+/* ── Masonry grid ── */
+.masonry-grid {
+  column-count: 2;
+  column-gap: 16px;
+}
+
+@media (min-width: 640px) {
+  .masonry-grid {
+    column-count: 2;
+    column-gap: 20px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .masonry-grid {
+    column-count: 4;
+    column-gap: 24px;
+  }
+}
+
+.masonry-item {
+  break-inside: avoid;
+  margin-bottom: 16px;
+}
+
+@media (min-width: 640px) {
+  .masonry-item {
+    margin-bottom: 20px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .masonry-item {
+    margin-bottom: 24px;
+  }
+}
+
+/* ── Fade in animation untuk foto baru ── */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.4s ease forwards;
+}
+
+/* ── Modal backdrop ── */
+.modal-backdrop {
+  backdrop-filter: blur(8px);
+  background: rgba(0, 0, 0, 0.7);
+}
+
+/* ── Progress bar shimmer ── */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.progress-shimmer {
+  background: linear-gradient(90deg, var(--deep-gold) 25%, var(--warm-yellow-end) 50%, var(--deep-gold) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* ── Bunga dekoratif pojok ── */
+.flower-decoration {
+  pointer-events: none;
+  user-select: none;
+  filter: blur(1px);
+  opacity: 0.35;
+}
+
+/* ── Video preview ── */
+video {
+  object-fit: cover;
+}
+
+/* ── Input styling ── */
+.gold-input {
+  background: rgba(247, 239, 199, 0.6);
+  border: 1.5px solid var(--warm-yellow-start);
+  border-radius: 12px;
+  padding: 10px 16px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  color: var(--charcoal);
+  width: 100%;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.gold-input:focus {
+  border-color: var(--deep-gold);
+  box-shadow: 0 0 0 3px rgba(138, 106, 31, 0.15);
+}
+
+.gold-input::placeholder {
+  color: #A89060;
+}
+
+/* ── Button variants ── */
+.btn-gold {
+  background: var(--deep-gold);
+  color: var(--cream-gold);
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 12px;
+  padding: 12px 24px;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+.btn-gold:hover {
+  background: #6B5118;
+  box-shadow: 0 4px 16px rgba(138, 106, 31, 0.35);
+}
+
+.btn-gold:active {
+  transform: scale(0.97);
+}
+
+.btn-outline-gold {
+  background: transparent;
+  color: var(--deep-gold);
+  border: 1.5px solid var(--deep-gold);
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: 12px;
+  padding: 11px 24px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-outline-gold:hover {
+  background: var(--deep-gold);
+  color: var(--cream-gold);
+}
